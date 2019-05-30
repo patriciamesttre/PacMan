@@ -2,27 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PacDot : MonoBehaviour
+public class Labirinto : MonoBehaviour
 {
     public Diretor diretor;
-
-    private void OnTriggerEnter2D(Collider2D colisor)
-    {
-        if (colisor.name == "pacman")
-        {
-            diretor.AdicionarPontos();
-            Destroy(gameObject);
-        }
-            
-            
-    }
-
 
     // Start is called before the first frame update
     void Start()
     {
         diretor = GameObject.FindObjectOfType<Diretor>();
-    }
+        int total = GameObject.FindGameObjectsWithTag(" ponto").Length;
+        diretor.AdicionarPontosMaximo(total);
+     }
 
     // Update is called once per frame
     void Update()
